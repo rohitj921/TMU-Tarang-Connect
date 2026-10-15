@@ -1,0 +1,16 @@
+{
+  "Username": "",
+  "Password": "",
+  "LoginUrl": "http://172.14.0.1:1000",
+  "TestUrl": "https://www.google.com",
+  "CheckIntervalSeconds": 15,
+  "RetryDelaySeconds": 10,
+  "MaxRetries": 5,
+  "ShowNotifications": true,
+  "AutoStartOnBoot": true,
+  "LastLogoutUrl": "",
+  "LastKeepaliveUrl": "",
+  "MaxLogSizeBytes": 1048576,
+  "AutoRotateOnLimit": true,
+  "Accounts": []
+}

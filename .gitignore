@@ -1,0 +1,29 @@
+## Visual Studio / VS Code Cache & Lock Files
+.vs/
+**/.vs/**
+*.vsidx
+FileContentIndex/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Local User Credentials & Runtime Data (Private)
+config.json
+*.log
+tmu_wifi_autologin.log
+bandwidth_usage.json
+speed_history.json
+*.tmp
+
+## Build Binaries & Output Folders
+bin/
+obj/
+release/
+**/bin/
+**/obj/
+*.exe
+*.dll
+*.pdb
