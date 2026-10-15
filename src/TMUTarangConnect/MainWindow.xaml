@@ -853,7 +853,7 @@
                             </Grid>
                         </Border>
 
-                        <!-- Developer & Project Links 2-Column Grid -->
+                        <!-- Developer & Project Links 2-Column Grid (Ultra-Premium Redesign) -->
                         <Grid Margin="0,0,0,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -861,25 +861,61 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Developer Box -->
-                            <Border Grid.Column="0" Background="#0E121B" CornerRadius="8" Padding="12,10" Margin="0,0,4,0" BorderBrush="#1C2333" BorderThickness="1">
+                            <Border Grid.Column="0" Background="#0F131D" CornerRadius="10" Padding="14,12" Margin="0,0,5,0" BorderBrush="#1E283D" BorderThickness="1">
                                 <StackPanel>
-                                    <TextBlock Text="DEVELOPED BY" FontSize="9.5" FontWeight="Bold" Foreground="#64748B" />
-                                    <TextBlock Text="Rohit Jain" FontSize="13" FontWeight="Bold" Foreground="#F8FAFC" Margin="0,2,0,1" />
-                                    <TextBlock Text="rohitjainofficial@gmail.com" FontSize="11" Foreground="#38BDF8" Margin="0,0,0,6" TextTrimming="CharacterEllipsis" />
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Content="Open Mail" Style="{StaticResource SecondaryBtn}" Padding="8,3" FontSize="10.5" Margin="0,0,6,0" Click="OnSendEmailClicked" />
-                                        <Button Content="Copy" Style="{StaticResource SecondaryBtn}" Padding="8,3" FontSize="10.5" Click="OnCopyEmailClicked" />
-                                    </StackPanel>
+                                    <Grid Margin="0,0,0,8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Width="32" Height="32" CornerRadius="8" Background="#16233B" BorderBrush="#253858" BorderThickness="1" Margin="0,0,10,0" VerticalAlignment="Center">
+                                            <TextBlock Text="👨‍💻" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="DEVELOPED BY" FontSize="9.5" FontWeight="Bold" Foreground="#38BDF8" />
+                                            <TextBlock Text="Rohit Jain" FontSize="13.5" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,1,0,0" />
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <!-- Email Chip -->
+                                    <Border Background="#090C14" CornerRadius="6" Padding="8,5" Margin="0,0,0,8" BorderBrush="#1C2436" BorderThickness="1">
+                                        <TextBlock Text="rohitjainofficial@gmail.com" FontSize="11" Foreground="#94A3B8" TextTrimming="CharacterEllipsis" />
+                                    </Border>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" Content="✉️ Send Mail" Style="{StaticResource SecondaryBtn}" Padding="0,5" FontSize="11" Margin="0,0,6,0" Click="OnSendEmailClicked" />
+                                        <Button Grid.Column="1" Content="📋 Copy" Style="{StaticResource SecondaryBtn}" Padding="10,5" FontSize="11" Click="OnCopyEmailClicked" />
+                                    </Grid>
                                 </StackPanel>
                             </Border>
 
-                            <!-- GitHub Box -->
-                            <Border Grid.Column="1" Background="#0E121B" CornerRadius="8" Padding="12,10" Margin="4,0,0,0" BorderBrush="#1C2333" BorderThickness="1">
+                            <!-- GitHub & Repository Box -->
+                            <Border Grid.Column="1" Background="#12101F" CornerRadius="10" Padding="14,12" Margin="5,0,0,0" BorderBrush="#2B2144" BorderThickness="1">
                                 <StackPanel>
-                                    <TextBlock Text="GITHUB &amp; REPOSITORY" FontSize="9.5" FontWeight="Bold" Foreground="#64748B" />
-                                    <TextBlock Text="github.com/rohitj921" FontSize="13" FontWeight="Bold" Foreground="#A78BFA" Margin="0,2,0,1" TextTrimming="CharacterEllipsis" />
-                                    <TextBlock Text="Open-source project updates &amp; issues" FontSize="10.5" Foreground="#64748B" Margin="0,0,0,6" />
-                                    <Button Content="View Profile ↗" Style="{StaticResource SecondaryBtn}" Padding="10,3" FontSize="10.5" HorizontalAlignment="Left" Click="OnOpenGithubClicked" />
+                                    <Grid Margin="0,0,0,8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Width="32" Height="32" CornerRadius="8" Background="#23173D" BorderBrush="#3D2968" BorderThickness="1" Margin="0,0,10,0" VerticalAlignment="Center">
+                                            <TextBlock Text="🐙" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <TextBlock Text="GITHUB REPOSITORY" FontSize="9.5" FontWeight="Bold" Foreground="#A78BFA" />
+                                            <TextBlock Text="TMU-Tarang-Connect-" FontSize="13.5" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,1,0,0" TextTrimming="CharacterEllipsis" />
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <!-- Repo link chip -->
+                                    <Border Background="#0A0814" CornerRadius="6" Padding="8,5" Margin="0,0,0,8" BorderBrush="#241B3B" BorderThickness="1">
+                                        <TextBlock Text="github.com/rohitj921/TMU-Tarang-Connect-" FontSize="11" Foreground="#C4B5FD" TextTrimming="CharacterEllipsis" />
+                                    </Border>
+
+                                    <Button Content="🌐 View Repository ↗" Style="{StaticResource SecondaryBtn}" Padding="0,5" FontSize="11" HorizontalAlignment="Stretch" Click="OnOpenGithubClicked" />
                                 </StackPanel>
                             </Border>
                         </Grid>
