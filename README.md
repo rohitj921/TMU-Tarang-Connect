@@ -1,9 +1,9 @@
 # TMU Tarang Connect ⚡
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/rohitj921/TMU-Tarang-Connect-)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/rohitj921/TMU-Tarang-Connect)
 [![Framework](https://img.shields.io/badge/.NET-9.0%20WPF-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v2.4%20Stable-38BDF8?style=for-the-badge)](https://github.com/rohitj921/TMU-Tarang-Connect-/releases)
+[![Release](https://img.shields.io/badge/Release-v2.4%20Stable-38BDF8?style=for-the-badge)](https://github.com/rohitj921/TMU-Tarang-Connect/releases)
 
 A high-performance, native Windows 11 desktop application and system tray automation engine for **Teerthanker Mahaveer University (TMU)** Wi-Fi networks (FortiGate Captive Portal).
 
@@ -90,8 +90,8 @@ You do **not** need to install Visual Studio, run commands, or touch any code to
 ### Build & Publish Commands:
 ```bash
 # Clone the repository
-git clone https://github.com/rohitj921/TMU-Tarang-Connect-.git
-cd TMU-Tarang-Connect-
+git clone https://github.com/rohitj921/TMU-Tarang-Connect.git
+cd TMU-Tarang-Connect
 
 # Build the Release binary
 dotnet build src/TMUTarangConnect/TMUTarangConnect.csproj -c Release
@@ -112,7 +112,7 @@ dotnet publish src/TMUTarangConnect/TMUTarangConnect.csproj -c Release -r win-x6
 ## 👨‍💻 Developer & Attribution
 
 Developed with ❤️ by **Rohit Jain**
-- **GitHub:** [rohitj921 / TMU-Tarang-Connect-](https://github.com/rohitj921/TMU-Tarang-Connect-)
+- **GitHub:** [rohitj921 / TMU-Tarang-Connect](https://github.com/rohitj921/TMU-Tarang-Connect)
 
 ---
 

@@ -763,7 +763,7 @@ public partial class MainWindow : Window
     {
         try
         {
-            Process.Start(new ProcessStartInfo("https://github.com/rohitj921/TMU-Tarang-Connect-") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://github.com/rohitj921/TMU-Tarang-Connect") { UseShellExecute = true });
         }
         catch { }
     }
