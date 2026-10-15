@@ -827,29 +827,35 @@
                 <TabItem Header="About">
                     <StackPanel Margin="0,10,0,0">
                         <!-- Application Hero Card -->
-                        <Border Background="#111522" CornerRadius="10" Padding="14,12" Margin="0,0,0,10" BorderBrush="#1E263B" BorderThickness="1">
+                        <!-- Application Hero Card (Executive Glassmorphic Finish) -->
+                        <Border Background="#101524" CornerRadius="12" Padding="16,14" Margin="0,0,0,10" BorderBrush="#1F2A42" BorderThickness="1">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <!-- App Logo Pill -->
-                                <Border Grid.Column="0" Width="46" Height="46" CornerRadius="12" Background="#16233B" BorderBrush="#25324D" BorderThickness="1" Margin="0,0,14,0" VerticalAlignment="Center">
-                                    <TextBlock Text="⚡" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <!-- Vibrant App Glow Icon -->
+                                <Border Grid.Column="0" Width="48" Height="48" CornerRadius="12" Background="#13233C" BorderBrush="#253D66" BorderThickness="1" Margin="0,0,14,0" VerticalAlignment="Center">
+                                    <TextBlock Text="⚡" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
 
+                                <!-- Title & Subtitles -->
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="TMU Tarang Connect" FontSize="15" FontWeight="Bold" Foreground="#FFFFFF" />
-                                        <Border Background="#1E3A8A" CornerRadius="4" Padding="6,1" Margin="8,0,0,0" VerticalAlignment="Center">
-                                            <TextBlock Text="v2.4 STABLE" FontSize="9" FontWeight="Bold" Foreground="#93C5FD" />
-                                        </Border>
-                                    </StackPanel>
-                                    <TextBlock Text="High-Performance FortiGate Captive Portal Client" FontSize="11.5" FontWeight="SemiBold" Foreground="#38BDF8" Margin="0,2,0,0" />
+                                    <TextBlock Text="TMU Tarang Connect" FontSize="16" FontWeight="Bold" Foreground="#FFFFFF" />
+                                    <TextBlock Text="High-Performance FortiGate Captive Portal Client" FontSize="11.5" FontWeight="SemiBold" Foreground="#38BDF8" Margin="0,3,0,0" />
                                     <TextBlock Text="Automated background authentication, multi-credential failover, and active connection monitoring."
                                                FontSize="10.5" Foreground="#64748B" Margin="0,2,0,0" TextWrapping="Wrap" />
                                 </StackPanel>
+
+                                <!-- Premium Status Pill (Right Aligned) -->
+                                <Border Grid.Column="2" Background="#0C2338" BorderBrush="#18456B" BorderThickness="1" CornerRadius="16" Padding="10,5" VerticalAlignment="Top" Margin="8,0,0,0">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Ellipse Width="6" Height="6" Fill="#10B981" Margin="0,0,6,0" />
+                                        <TextBlock Text="v2.4 STABLE" FontSize="9.5" FontWeight="Bold" Foreground="#67E8F9" />
+                                    </StackPanel>
+                                </Border>
                             </Grid>
                         </Border>
 
@@ -893,26 +899,26 @@
                                 </StackPanel>
                             </Border>
 
-                            <!-- GitHub & Repository Box -->
-                            <Border Grid.Column="1" Background="#12101F" CornerRadius="10" Padding="14,12" Margin="5,0,0,0" BorderBrush="#2B2144" BorderThickness="1">
+                            <!-- GitHub & Repository Box (Harmonious Slate/Blue Theme - No More Purple) -->
+                            <Border Grid.Column="1" Background="#0F131D" CornerRadius="10" Padding="14,12" Margin="5,0,0,0" BorderBrush="#1E283D" BorderThickness="1">
                                 <StackPanel>
                                     <Grid Margin="0,0,0,8">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Border Grid.Column="0" Width="32" Height="32" CornerRadius="8" Background="#23173D" BorderBrush="#3D2968" BorderThickness="1" Margin="0,0,10,0" VerticalAlignment="Center">
+                                        <Border Grid.Column="0" Width="32" Height="32" CornerRadius="8" Background="#16233B" BorderBrush="#253858" BorderThickness="1" Margin="0,0,10,0" VerticalAlignment="Center">
                                             <TextBlock Text="🐙" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                         </Border>
                                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                            <TextBlock Text="GITHUB REPOSITORY" FontSize="9.5" FontWeight="Bold" Foreground="#A78BFA" />
+                                            <TextBlock Text="GITHUB REPOSITORY" FontSize="9.5" FontWeight="Bold" Foreground="#60A5FA" />
                                             <TextBlock Text="TMU-Tarang-Connect-" FontSize="13.5" FontWeight="Bold" Foreground="#FFFFFF" Margin="0,1,0,0" TextTrimming="CharacterEllipsis" />
                                         </StackPanel>
                                     </Grid>
 
                                     <!-- Repo link chip -->
-                                    <Border Background="#0A0814" CornerRadius="6" Padding="8,5" Margin="0,0,0,8" BorderBrush="#241B3B" BorderThickness="1">
-                                        <TextBlock Text="github.com/rohitj921/TMU-Tarang-Connect-" FontSize="11" Foreground="#C4B5FD" TextTrimming="CharacterEllipsis" />
+                                    <Border Background="#090C14" CornerRadius="6" Padding="8,5" Margin="0,0,0,8" BorderBrush="#1C2436" BorderThickness="1">
+                                        <TextBlock Text="github.com/rohitj921/TMU-Tarang-Connect-" FontSize="11" Foreground="#94A3B8" TextTrimming="CharacterEllipsis" />
                                     </Border>
 
                                     <Button Content="🌐 View Repository ↗" Style="{StaticResource SecondaryBtn}" Padding="0,5" FontSize="11" HorizontalAlignment="Stretch" Click="OnOpenGithubClicked" />
@@ -934,8 +940,11 @@
                             </StackPanel>
                         </Border>
 
-                        <TextBlock Text="TMU Tarang Connect • Developed with ❤️ by Rohit Jain"
-                                   FontSize="10" Foreground="#64748B" HorizontalAlignment="Center" Margin="0,2,0,0" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,3,0,0">
+                            <TextBlock Text="TMU Tarang Connect • Developed with " FontSize="10" Foreground="#64748B" />
+                            <TextBlock Text="♥" FontSize="11" Foreground="#EF4444" Margin="1,-1,1,0" FontWeight="Bold" />
+                            <TextBlock Text=" by Rohit Jain" FontSize="10" Foreground="#64748B" />
+                        </StackPanel>
                     </StackPanel>
                 </TabItem>
             </TabControl>
