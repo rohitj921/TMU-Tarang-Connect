@@ -31,7 +31,7 @@ public partial class App : Application
         // Catch any unhandled crash
         AppDomain.CurrentDomain.UnhandledException += (s, args) =>
         {
-            ConfigService.Log("CRASH", args.ExceptionObject.ToString());
+            ConfigService.Log("CRASH", args.ExceptionObject?.ToString() ?? "Unknown unhandled exception");
         };
         DispatcherUnhandledException += (s, args) =>
         {

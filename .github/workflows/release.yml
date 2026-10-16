@@ -1,0 +1,145 @@
+name: CD Release Pipeline
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release Tag (e.g. v2.4.1)'
+        required: false
+        default: ''
+      is_draft:
+        description: 'Mark as Draft Release'
+        type: boolean
+        required: false
+        default: false
+      is_prerelease:
+        description: 'Mark as Pre-release'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Package & Publish Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Resolve Version Tag
+        id: vars
+        shell: pwsh
+        run: |
+          $tag = "${{ github.event.inputs.tag_name }}".Trim()
+          if ([string]::IsNullOrWhiteSpace($tag)) {
+            $tag = "${{ github.ref_name }}".Trim()
+          }
+          if (-not [string]::IsNullOrWhiteSpace($tag) -and -not $tag.StartsWith('v')) {
+            $tag = "v$tag"
+          }
+          if ([string]::IsNullOrWhiteSpace($tag) -or $tag -eq "vmain" -or $tag -eq "vmaster") {
+            $tag = "v1.0.0-manual"
+          }
+          Write-Host "Resolved Version Tag: $tag"
+          "version=$tag" >> $env:GITHUB_OUTPUT
+
+      - name: Restore dependencies
+        run: dotnet restore src/TMUTarangConnect/TMUTarangConnect.csproj
+
+      - name: Publish Portable (.NET 9 Runtime required, ~1.1MB)
+        run: >-
+          dotnet publish src/TMUTarangConnect/TMUTarangConnect.csproj
+          -c Release
+          -r win-x64
+          --self-contained false
+          -p:PublishSingleFile=true
+          -o ./dist/portable
+
+      - name: Publish Standalone Self-Contained (Zero dependency, ~75MB)
+        run: >-
+          dotnet publish src/TMUTarangConnect/TMUTarangConnect.csproj
+          -c Release
+          -r win-x64
+          --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true
+          -o ./dist/standalone
+
+      - name: Bundle Release Packages
+        shell: pwsh
+        run: |
+          $ver = "${{ steps.vars.outputs.version }}"
+          New-Item -ItemType Directory -Force -Path ./dist/out | Out-Null
+
+          # 1. Standalone raw EXE for 1-click download
+          Copy-Item ./dist/standalone/TMUTarangConnect.exe ./dist/out/TMUTarangConnect.exe
+
+          # 2. Portable Zip Package
+          $portableDir = "./dist/portable-package"
+          New-Item -ItemType Directory -Force -Path $portableDir | Out-Null
+          Copy-Item ./dist/portable/TMUTarangConnect.exe $portableDir/
+          Copy-Item ./Stop-App.bat $portableDir/
+          Copy-Item ./config.example.json $portableDir/
+          Copy-Item ./README.md $portableDir/
+          Copy-Item ./LICENSE $portableDir/
+          Copy-Item ./app.ico $portableDir/
+          Compress-Archive -Path "$portableDir/*" -DestinationPath "./dist/out/TMUTarangConnect-$ver-portable.zip" -Force
+
+          # 3. Standalone Zip Package
+          $standaloneDir = "./dist/standalone-package"
+          New-Item -ItemType Directory -Force -Path $standaloneDir | Out-Null
+          Copy-Item ./dist/standalone/TMUTarangConnect.exe $standaloneDir/
+          Copy-Item ./Stop-App.bat $standaloneDir/
+          Copy-Item ./config.example.json $standaloneDir/
+          Copy-Item ./README.md $standaloneDir/
+          Copy-Item ./LICENSE $standaloneDir/
+          Copy-Item ./app.ico $standaloneDir/
+          Compress-Archive -Path "$standaloneDir/*" -DestinationPath "./dist/out/TMUTarangConnect-$ver-standalone-win-x64.zip" -Force
+
+      - name: Generate Checksums (SHA256)
+        shell: pwsh
+        run: |
+          cd ./dist/out
+          $hashes = Get-ChildItem -File | Where-Object { $_.Name -ne "checksums.txt" } | ForEach-Object {
+            $hash = (Get-FileHash -Algorithm SHA256 $_.FullName).Hash.ToLower()
+            "$hash  $($_.Name)"
+          }
+          $hashes | Out-File -Encoding utf8 checksums.txt
+          Get-Content checksums.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.tag_name != ''
+        with:
+          tag_name: ${{ steps.vars.outputs.version }}
+          name: TMU Tarang Connect ${{ steps.vars.outputs.version }}
+          draft: ${{ github.event.inputs.is_draft || false }}
+          prerelease: ${{ github.event.inputs.is_prerelease || false }}
+          generate_release_notes: true
+          files: |
+            ./dist/out/TMUTarangConnect.exe
+            ./dist/out/TMUTarangConnect-*-portable.zip
+            ./dist/out/TMUTarangConnect-*-standalone-win-x64.zip
+            ./dist/out/checksums.txt
+
+      - name: Upload Release Artifacts to Workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: TMUTarangConnect-${{ steps.vars.outputs.version }}-Distribution
+          path: ./dist/out/*
+          retention-days: 14

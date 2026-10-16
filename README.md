@@ -4,6 +4,8 @@
 [![Framework](https://img.shields.io/badge/.NET-9.0%20WPF-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![License](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](LICENSE)
 [![Release](https://img.shields.io/badge/Release-v2.4%20Stable-38BDF8?style=for-the-badge)](https://github.com/rohitj921/TMU-Tarang-Connect/releases)
+[![CI Build](https://img.shields.io/github/actions/workflow/status/rohitj921/TMU-Tarang-Connect/ci.yml?branch=main&label=CI%20Build&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/rohitj921/TMU-Tarang-Connect/actions/workflows/ci.yml)
+[![Release CD](https://img.shields.io/github/actions/workflow/status/rohitj921/TMU-Tarang-Connect/release.yml?label=Release%20CD&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/rohitj921/TMU-Tarang-Connect/actions/workflows/release.yml)
 
 A high-performance, native Windows 11 desktop application and system tray automation engine for **Teerthanker Mahaveer University (TMU)** Wi-Fi networks (FortiGate Captive Portal).
 
