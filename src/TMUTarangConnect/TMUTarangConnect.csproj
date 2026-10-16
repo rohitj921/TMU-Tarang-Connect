@@ -12,6 +12,7 @@
     <Product>TMU Tarang Auto-Login</Product>
     <Description>Teerthanker Mahaveer University Wi-Fi Auto-Login Client</Description>
     <Version>1.0.0</Version>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
     <Copyright>Copyright © 2026</Copyright>
   </PropertyGroup>
 

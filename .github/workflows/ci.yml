@@ -35,17 +35,17 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore src/TMUTarangConnect/TMUTarangConnect.csproj
+        run: dotnet restore src/TMUTarangConnect/TMUTarangConnect.csproj -r win-x64
 
       - name: Build project (Release)
-        run: dotnet build src/TMUTarangConnect/TMUTarangConnect.csproj -c Release --no-restore /p:TreatWarningsAsErrors=true
+        run: dotnet build src/TMUTarangConnect/TMUTarangConnect.csproj -c Release -r win-x64 --no-restore /p:TreatWarningsAsErrors=true
 
       - name: Publish portable executable smoke-test
         run: >-
           dotnet publish src/TMUTarangConnect/TMUTarangConnect.csproj
           -c Release
           -r win-x64
-          --no-build
+          --no-restore
           --self-contained false
           -p:PublishSingleFile=true
           -o ./artifacts/portable

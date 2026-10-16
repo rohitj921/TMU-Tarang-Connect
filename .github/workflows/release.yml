@@ -58,7 +58,7 @@ jobs:
           "version=$tag" >> $env:GITHUB_OUTPUT
 
       - name: Restore dependencies
-        run: dotnet restore src/TMUTarangConnect/TMUTarangConnect.csproj
+        run: dotnet restore src/TMUTarangConnect/TMUTarangConnect.csproj -r win-x64
 
       - name: Publish Portable (.NET 9 Runtime required, ~1.1MB)
         run: >-
